@@ -20,8 +20,8 @@ def merge(load_dt="20240724"):
     dw['repNationCd'] = dw['repNationCd'].astype('object')
 
     # df[' x '].fillna(df[' x '].mode()[0],inplace=T
-    dw['multiMovieYn'].fillna(dw['multiMovieYn'].mode()[0],inplace=True)
-    dw['repNationCd'].fillna( dw['repNationCd'].mode()[0],inplace=True)
+    dw['multiMovieYn']=dw['multiMovieYn'].fillna(dw['multiMovieYn'].mode()[0])
+    dw['repNationCd']=dw['repNationCd'].fillna( dw['repNationCd'].mode()[0])
     print(dw)
 
     # 중복행제거
@@ -29,4 +29,5 @@ def merge(load_dt="20240724"):
     
     print(df_unique)
     return  df_unique
+
 
