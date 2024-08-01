@@ -1,6 +1,6 @@
 import pandas as pd 
 
-def merge(load_dt="20240724"):
+def merge(load_dt="20240720"):
     read_df = pd.read_parquet('~/tmp/test_parquet')
     cols = ['movieCd', #영화의 대표코드를 출력합니다.
        'movieNm', #영화명(국문)을 출력합니다.
@@ -13,7 +13,7 @@ def merge(load_dt="20240724"):
     df = read_df[cols]
     # 울버린 만조회 지우고 ...
     dw = df[(df['movieCd'] == '20235974') & (df['load_dt'] == int(load_dt))].copy() 
-    
+    print(dw) 
      # 카테고리 타입 -> Object
     dw['load_dt'] = dw['load_dt'].astype('object')
     dw['multiMovieYn'] = dw['multiMovieYn'].astype('object')
@@ -24,7 +24,7 @@ def merge(load_dt="20240724"):
     if not mode_values.empty:
         mode_value = mode_values[0]
     else:
-        mode_value =None
+        mode_value = 'unknown'
     print(mode_value)
     dw['multiMovieYn']=dw['multiMovieYn'].fillna(mode_value)
     
@@ -33,7 +33,7 @@ def merge(load_dt="20240724"):
     if not mode_values.empty:
         mode_value = mode_values[0]
     else:
-        mode_value =None
+        mode_value = 'unknown'
     print(mode_value)
 
     dw['repNationCd']=dw['repNationCd'].fillna(mode_value)
