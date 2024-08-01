@@ -20,14 +20,29 @@ def merge(load_dt="20240724"):
     dw['repNationCd'] = dw['repNationCd'].astype('object')
 
     # df[' x '].fillna(df[' x '].mode()[0],inplace=T
-    dw['multiMovieYn']=dw['multiMovieYn'].fillna(dw['multiMovieYn'].mode()[0])
-    dw['repNationCd']=dw['repNationCd'].fillna( dw['repNationCd'].mode()[0])
-    print(dw)
+    mode_values =  dw['multiMovieYn'].mode()
+    if not mode_values.empty:
+        mode_value = mode_values[0]
+    else:
+        mode_value =None
+    print(mode_value)
+    dw['multiMovieYn']=dw['multiMovieYn'].fillna(mode_value)
+    
+    mode_values =  dw['repNationCd'].mode()
+    
+    if not mode_values.empty:
+        mode_value = mode_values[0]
+    else:
+        mode_value =None
+    print(mode_value)
 
+    dw['repNationCd']=dw['repNationCd'].fillna(mode_value)
+    
+    print(dw)
     # 중복행제거
     df_unique = dw.drop_duplicates()
     
     print(df_unique)
     return  df_unique
 
-
+merge()
