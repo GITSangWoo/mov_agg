@@ -28,4 +28,3 @@ def merge(load_dt="20240724"):
     dw_unique=dw.drop_duplicates()
     print(dw_unique)
 
-merge()

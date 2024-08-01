@@ -35,4 +35,3 @@ def merge(load_dt="20240724"):
     print(m_df)
     return m_df
 
-merge()
