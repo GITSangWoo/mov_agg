@@ -1,6 +1,6 @@
 import pandas as pd 
 
-def merge(load_dt="20240720"):
+def merge(load_dt="20240724"):
     read_df = pd.read_parquet('~/tmp/test_parquet')
     cols = ['movieCd', #영화의 대표코드를 출력합니다.
        'movieNm', #영화명(국문)을 출력합니다.
@@ -25,7 +25,6 @@ def merge(load_dt="20240720"):
         mode_value = mode_values[0]
     else:
         mode_value = 'unknown'
-    print(mode_value)
     dw['multiMovieYn']=dw['multiMovieYn'].fillna(mode_value)
     
     mode_values =  dw['repNationCd'].mode()
@@ -34,7 +33,6 @@ def merge(load_dt="20240720"):
         mode_value = mode_values[0]
     else:
         mode_value = 'unknown'
-    print(mode_value)
 
     dw['repNationCd']=dw['repNationCd'].fillna(mode_value)
     
